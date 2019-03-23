@@ -15,14 +15,12 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('Connected to client');
  
-  socket.emit('welcome client', {
-    id: socket.id,
-    messsage: 'Welcome to chat app client!'
-  });
-
-  socket.on('welcome server', (messsage) => {
-    console.log('welcome server', messsage);
-    
+  socket.on('create message', (message) => {
+    io.emit('new message', {
+      from: message.from,
+      text: message.text,
+      createdAt: new Date().getTime()
+    });
   });
 
   socket.on('disconnect', () => {
