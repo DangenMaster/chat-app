@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "npm test"
   },
   "engines": {
     "node": "10.15.3"
@@ -14,5 +16,9 @@
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "expect": "^24.5.0",
+    "mocha": "^6.0.2"
   }
 }
